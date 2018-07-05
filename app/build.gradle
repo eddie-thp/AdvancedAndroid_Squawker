@@ -25,18 +25,19 @@ dependencies {
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
     testImplementation 'junit:junit:4.12'
 
     // RecyclerView
-    implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 
     // Schematic dependencies for ContentProvider
-    apt 'net.simonvt.schematic:schematic-compiler:0.6.3'
-    implementation 'net.simonvt.schematic:schematic:0.6.3'
+    apt 'net.simonvt.schematic:schematic-compiler:0.7.0'
+    implementation 'net.simonvt.schematic:schematic:0.7.0'
+    annotationProcessor 'net.simonvt.schematic:schematic-compiler:0.7.0'
 
     // Preferences Dependencies
-    implementation 'com.android.support:preference-v7:27.1.0'
+    implementation 'com.android.support:preference-v7:27.1.1'
 
     // TODO (3) Add the Firebase libraries and apply the GPS plugin in this file. Make sure to save the
     // google.services.json file in the app folder. After syncing the changes, you should be able
