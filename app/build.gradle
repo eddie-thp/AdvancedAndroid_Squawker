@@ -44,7 +44,8 @@ dependencies {
     // to send a notification to your app using the Firebase console. The app must be in the
     // background!
     // Firebase dependency
-    implementation 'com.google.firebase:firebase-core:16.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
 
 }
 
