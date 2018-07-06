@@ -107,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements
 
         // DONE (3) Here, in MainActivity, get a token using FirebaseInstanceId.getInstance().getToken()
         // DONE (4) Get the message from that token and print it in a log statement
+        // Get token from the ID Service you created and show it in a log
         String token = FirebaseInstanceId.getInstance().getToken();
         String msg = getString(R.string.message_token_format, token);
         Log.d(LOG_TAG, msg);

@@ -1,3 +1,18 @@
+/*
+* Copyright (C) 2017 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*  	http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
 package android.example.com.squawker.fcm;
 
 import android.app.NotificationManager;
@@ -38,7 +53,11 @@ import java.util.Map;
 // If you don't know how to make notifications or interact with a content provider
 // look at the notes in the classroom for help.
 
-
+/**
+ * Listens for squawk FCM messages both in the background and the foreground and responds
+ * appropriately
+ * depending on type of message
+ */
 public class SquawkFirebaseMessageService extends FirebaseMessagingService {
 
     private static String LOG_TAG = SquawkFirebaseMessageService.class.getSimpleName();
@@ -50,6 +69,11 @@ public class SquawkFirebaseMessageService extends FirebaseMessagingService {
 
     private static final int NOTIFICATION_MAX_CHARACTERS = 30;
 
+    /**
+     * Called when message is received.
+     *
+     * @param remoteMessage Object representing the message received from Firebase Cloud Messaging
+     */
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
@@ -81,7 +105,6 @@ public class SquawkFirebaseMessageService extends FirebaseMessagingService {
             // Send a notification that you got a new message
             sendNotification(dataMap);
             insertSquawk(dataMap);
-
         }
     }
 
