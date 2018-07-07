@@ -19,6 +19,7 @@ import android.content.SharedPreferences;
 import android.example.com.squawker.R;
 import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;
+import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -36,6 +37,13 @@ public class FollowingPreferenceFragment extends PreferenceFragmentCompat implem
         addPreferencesFromResource(R.xml.following_squawker);
     }
 
+    /**
+     * Triggered when shared preferences changes. This will be triggered when a person is followed
+     * or un-followed
+     *
+     * @param sharedPreferences SharedPreferences file
+     * @param key               The key of the preference which was changed
+     */
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         // DONE (2) When a SharedPreference changes, check which preference it is and subscribe or
@@ -47,10 +55,18 @@ public class FollowingPreferenceFragment extends PreferenceFragmentCompat implem
         // HINT: Checkout res->xml->following_squawker.xml. Note how the keys for each of the
         // preferences matches the topic to subscribe to for each instructor.
 
+        // Check the current state of the switch preference
         if (sharedPreferences.getBoolean(key, false)) {
+            // The preference key matches the following key for the associated instructor in
+            // FCM. For example, the key for Lyla is key_lyla (as seen in
+            // following_squawker.xml). The topic for Lyla's messages is /topics/key_lyla
+
+            // Subscribe
             FirebaseMessaging.getInstance().subscribeToTopic(key);
+            Log.d(LOG_TAG, "Subscribing to " + key);
         } else {
             FirebaseMessaging.getInstance().unsubscribeFromTopic(key);
+            Log.d(LOG_TAG, "Un-subscribing to " + key);
         }
     }
 
